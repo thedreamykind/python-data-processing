@@ -6,4 +6,6 @@ To run the python script -
 3. Ensure that you have python 2.7 installed (I'm on python 2.7.13 - https://www.python.org/downloads/release/python-2713/). 
 4. Run "python count_by_zip.py" on the command line, while inside the cloned repository.
 
+Please read data_validation_notes.txt for additional information. 
+
 Note that the output.csv included in the repository will be overwritten when you run the script. The expected output is also available in output_backup.csv, if needed. 
