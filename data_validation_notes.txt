@@ -24,6 +24,28 @@ Tue Sep 11 21:29 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 9
    2 92167
    1 95483
    2 99178
+   
+# Running the python script.
+Tue Sep 11 23:07 ~/git/pyhack/git/python-data-processing [master ?]: python count_by_zip.py
+Debug output format - {key = zip, value = number of unique people with a fever}
+{'12198': 3,
+ '13464': 2,
+ '30585': 6,
+ '34709': 3,
+ '36493': 2,
+ '39234': 3,
+ '43795': 5,
+ '44842': 3,
+ '45055': 1,
+ '46197': 1,
+ '46279': 2,
+ '48795': 3,
+ '70272': 2,
+ '74471': 1,
+ '77189': 1,
+ '92167': 2,
+ '95483': 1,
+ '99178': 2}
 
 # Preliminary validation. 
 # Number of readings which qualify as a fever. 
