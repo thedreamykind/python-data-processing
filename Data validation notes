@@ -4,27 +4,7 @@ Data validation notes
 - Some of the commands require jq. If you would like to replicate these commands, please ensure that you have jq installed.
 - https://stedolan.github.io/jq/download/
 
-# Number of readings which qualify as a fever. 
-Tue Sep 11 18:08 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 99.5)' | jq .user.id | wc -l
-      47
-
-# Number of unique user_ids with a fever. 
-Tue Sep 11 18:10 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 99.5)' | jq .user.id | sort | uniq | wc -l
-      43
-
-# Validate that the readings only contain data for one date. 
-Tue Sep 11 18:08 ~/git/pyhack : cat readings.jsonl | jq .date | sort | uniq
-"20180315"
-
-# Number of users. 
-Tue Sep 11 18:26 ~/git/pyhack : cat user_data.csv | wc -l
-     399
-
-# Ensure that there are no duplicate user_ids. 
-Tue Sep 11 18:27 ~/git/pyhack : cat user_data.csv | awk -F',' '{print $1}' | sort | uniq | wc -l
-     399
-
-# Expected output, obtained through a sequence of piped bash commands.  
+# Final validation - expected output, obtained through a sequence of piped bash commands.  
 Tue Sep 11 21:29 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 99.5)' | jq .user.id | sort | uniq | xargs -I % grep "%," user_data.csv | awk -F"," '{print $2}' | sort | uniq -c
    3 12198
    2 13464
@@ -44,3 +24,24 @@ Tue Sep 11 21:29 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 9
    2 92167
    1 95483
    2 99178
+
+# Preliminary validation. 
+# Number of readings which qualify as a fever. 
+Tue Sep 11 18:08 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 99.5)' | jq .user.id | wc -l
+      47
+
+# Number of unique user_ids with a fever. 
+Tue Sep 11 18:10 ~/git/pyhack : cat readings.jsonl | jq 'select(.temperature > 99.5)' | jq .user.id | sort | uniq | wc -l
+      43
+
+# Validate that the readings only contain data for one date. 
+Tue Sep 11 18:08 ~/git/pyhack : cat readings.jsonl | jq .date | sort | uniq
+"20180315"
+
+# Number of users. 
+Tue Sep 11 18:26 ~/git/pyhack : cat user_data.csv | wc -l
+     399
+
+# Ensure that there are no duplicate user_ids. 
+Tue Sep 11 18:27 ~/git/pyhack : cat user_data.csv | awk -F',' '{print $1}' | sort | uniq | wc -l
+     399
